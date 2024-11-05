@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://wdgfthjnjpe7"]
+[gd_scene load_steps=6 format=4 uid="uid://wdgfthjnjpe7"]
 
 [ext_resource type="PackedScene" uid="uid://cifow0itp45ks" path="res://tile.tscn" id="1_lgixv"]
 [ext_resource type="Script" path="res://tile_map.gd" id="2_2fq77"]
@@ -10,8 +10,19 @@ scenes/1/scene = ExtResource("1_lgixv")
 tile_size = Vector2i(138, 138)
 sources/0 = SubResource("TileSetScenesCollectionSource_wbv6r")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_belal"]
+size = Vector2(551, 546)
+
 [node name="TileMap" type="TileMapLayer"]
-position = Vector2(0, 62)
-tile_map_data = PackedByteArray("AAAEAAIAAAAAAAAAAQAFAAIAAAAAAAAAAQADAAIAAAAAAAAAAQADAAEAAAAAAAAAAQACAAEAAAAAAAAAAQACAAIAAAAAAAAAAQACAAMAAAAAAAAAAQADAAMAAAAAAAAAAQAEAAMAAAAAAAAAAQAFAAMAAAAAAAAAAQAEAAEAAAAAAAAAAQAFAAEAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQAFAAAAAAAAAAAAAQA=")
+position = Vector2(2, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQADAAEAAAAAAAAAAQACAAEAAAAAAAAAAQABAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQAAAAMAAAAAAAAAAQABAAMAAAAAAAAAAQACAAIAAAAAAAAAAQACAAMAAAAAAAAAAQADAAMAAAAAAAAAAQADAAIAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_eerxr")
 script = ExtResource("2_2fq77")
+
+[node name="TileMapArea" type="Area2D" parent="."]
+
+[node name="TileMapCollisionShape" type="CollisionShape2D" parent="TileMapArea"]
+position = Vector2(275.5, 277)
+shape = SubResource("RectangleShape2D_belal")
+
+[connection signal="mouse_exited" from="TileMapArea" to="." method="_on_tile_map_area_mouse_exited"]
