@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=4 uid="uid://wdgfthjnjpe7"]
+[gd_scene load_steps=7 format=4 uid="uid://wdgfthjnjpe7"]
 
 [ext_resource type="PackedScene" uid="uid://cifow0itp45ks" path="res://tile.tscn" id="1_lgixv"]
 [ext_resource type="Script" path="res://tile_map.gd" id="2_2fq77"]
+[ext_resource type="PackedScene" uid="uid://diefrmpm3fcun" path="res://tile2.tscn" id="2_vfwv1"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wbv6r"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_og7gl"]
+resource_name = "Tiles"
 scenes/1/scene = ExtResource("1_lgixv")
+scenes/2/scene = ExtResource("2_vfwv1")
 
 [sub_resource type="TileSet" id="TileSet_eerxr"]
 tile_size = Vector2i(138, 138)
-sources/0 = SubResource("TileSetScenesCollectionSource_wbv6r")
+sources/0 = SubResource("TileSetScenesCollectionSource_og7gl")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_belal"]
 size = Vector2(551, 546)
