@@ -1,13 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://wdgfthjnjpe7"]
+[gd_scene load_steps=6 format=4 uid="uid://wdgfthjnjpe7"]
 
 [ext_resource type="PackedScene" uid="uid://cifow0itp45ks" path="res://tile.tscn" id="1_lgixv"]
 [ext_resource type="Script" path="res://tile_map.gd" id="2_2fq77"]
-[ext_resource type="PackedScene" uid="uid://diefrmpm3fcun" path="res://tile2.tscn" id="2_vfwv1"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_og7gl"]
 resource_name = "Tiles"
 scenes/1/scene = ExtResource("1_lgixv")
-scenes/2/scene = ExtResource("2_vfwv1")
 
 [sub_resource type="TileSet" id="TileSet_eerxr"]
 tile_size = Vector2i(138, 138)
@@ -27,5 +25,13 @@ script = ExtResource("2_2fq77")
 [node name="TileMapCollisionShape" type="CollisionShape2D" parent="TileMapArea"]
 position = Vector2(275.5, 277)
 shape = SubResource("RectangleShape2D_belal")
+
+[node name="PieceLabel" type="Label" parent="."]
+offset_left = 707.0
+offset_top = 214.0
+offset_right = 993.0
+offset_bottom = 351.0
+theme_override_font_sizes/font_size = 100
+text = "Ortho"
 
 [connection signal="mouse_exited" from="TileMapArea" to="." method="_on_tile_map_area_mouse_exited"]

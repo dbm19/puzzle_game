@@ -6,6 +6,7 @@ var diagon_piece_scene
 var diagon_piece_instance
 var dot_scene
 var dot_instance
+var piece_label
 var m_c #mouse_coordinates
 var current_piece
 var modified_tiles
@@ -19,7 +20,8 @@ func _ready() -> void:
 	diagon_piece_scene = preload("res://diagon_piece.tscn")
 	diagon_piece_instance = diagon_piece_scene.instantiate()
 	dot_scene = preload("res://dot.tscn")
-
+	
+	piece_label = get_node("PieceLabel")
 	current_piece = "ortho_piece"
 	
 	var dictionary_index = 0
@@ -37,8 +39,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_piece"):
 		if current_piece == "ortho_piece":
 			current_piece = "diagon_piece"
+			piece_label.text = "Diagonal"
 		else:
 			current_piece = "ortho_piece"
+			piece_label.text = "Ortho"
 
 	if Input.is_action_just_pressed("add_piece") && Global.mouse_is_over:
 		if current_piece == "ortho_piece":
