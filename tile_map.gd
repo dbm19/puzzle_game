@@ -20,7 +20,7 @@ func _ready() -> void:
 		all_tiles[n] = dictionary_index
 		dictionary_index += 1
 	
-	print(get_used_cells())
+	#print(get_used_cells())
 	#print(self.tile_set.get_source(0).get_scene_tile_scene(1)._bundled)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,19 +33,15 @@ func _process(delta: float) -> void:
 		
 		for n in ortho_tiles:
 			if all_tiles.has(n):
-				pass
-				#print(get_used_cells_by_id(0, n))
-				#print(get_cell_source_id(n))
-				#print(get_cell_tile_data(n))
-				#print(self.get_cell_tile_data(n))
-				#print(n)
-				set_cell(n, 1, Vector2i(0, 0), 2)
+				#set_cell(n, 0, Vector2i(0, 0), 2) #0 is the TileSet id, 2 is the Tile id
+				print(Global.tiles_dictionary[n].get_node("TileCenter"))
+				Global.tiles_dictionary[n].get_node("TileCenter").add_child(dot_instance)
 			else:
+				print('huh')
 				pass
 
 func get_cell_coordinates():
 	mouse_coordinates = local_to_map(get_viewport().get_mouse_position())
-	#print(get_cell_atlas_coords(mouse_coordinates))
 
 func _on_tile_map_area_mouse_exited() -> void:
 	Global.mouse_is_over = false

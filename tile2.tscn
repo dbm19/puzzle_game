@@ -6,18 +6,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn3kd"]
 size = Vector2(128, 128)
 
-[node name="Tile" type="Node2D"]
+[node name="Dot" type="Node2D" groups=["tile2"]]
 position = Vector2(0, -1)
 script = ExtResource("1_2yave")
 
-[node name="TileSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_vu8u1")
+[node name="DotArea" type="Area2D" parent="."]
 
-[node name="TileArea" type="Area2D" parent="."]
-
-[node name="TileCollision" type="CollisionShape2D" parent="TileArea"]
+[node name="DotCollision" type="CollisionShape2D" parent="DotArea"]
 shape = SubResource("RectangleShape2D_qn3kd")
 
-[node name="TileCenter" type="Marker2D" parent="."]
+[node name="DotCenter" type="Marker2D" parent="."]
 
-[connection signal="mouse_entered" from="TileArea" to="." method="_on_tile_area_mouse_entered"]
+[node name="DotSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vu8u1")
+
+[connection signal="mouse_entered" from="DotArea" to="." method="_on_tile_area_mouse_entered"]
