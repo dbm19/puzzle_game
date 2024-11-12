@@ -27,17 +27,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("add_piece") && Global.mouse_is_over:
 		ortho_piece_instance = ortho_piece_scene.instantiate()
-		dot_instance = dot_scene.instantiate()
 		Global.tile_center.add_child(ortho_piece_instance)
 		ortho_tiles = get_surrounding_cells(mouse_coordinates)
 		
 		for n in ortho_tiles:
 			if all_tiles.has(n):
 				#set_cell(n, 0, Vector2i(0, 0), 2) #0 is the TileSet id, 2 is the Tile id
-				print(Global.tiles_dictionary[n].get_node("TileCenter"))
-				Global.tiles_dictionary[n].get_node("TileCenter").add_child(dot_instance)
+				#print(local_to_map(Global.tiles_dictionary[n].get_node("TileCenter").global_position))
+				if Global.tiles_dictionary[n].has_node("Dot"):
+					Global.tiles_dictionary[n].remove_child(Global.tiles_dictionary[n].get_children()[3])
+				else:
+					dot_instance = dot_scene.instantiate()
+					Global.tiles_dictionary[n].add_child(dot_instance)
 			else:
-				print('huh')
 				pass
 
 func get_cell_coordinates():
