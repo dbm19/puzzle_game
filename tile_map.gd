@@ -21,6 +21,9 @@ func _ready() -> void:
 	diagon_piece_instance = diagon_piece_scene.instantiate()
 	dot_scene = preload("res://dot.tscn")
 	
+	get_node("TileMapArea/TileMapCollisionShape").scale.x = scale.x
+	get_node("TileMapArea/TileMapCollisionShape").scale.y = scale.y
+
 	piece_label = get_node("PieceLabel")
 	current_piece = "ortho_piece"
 	
@@ -63,7 +66,8 @@ func _process(delta: float) -> void:
 				pass
 
 func get_cell_coordinates():
-	m_c = local_to_map(get_viewport().get_mouse_position())
+	m_c = local_to_map(get_local_mouse_position())
+	print(m_c)
 
 func _on_tile_map_area_mouse_exited() -> void:
 	Global.mouse_is_over = false
