@@ -15,11 +15,11 @@ var all_tiles = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ortho_piece_scene = preload("res://ortho_piece.tscn")
+	ortho_piece_scene = preload("res://scenes/ortho_piece.tscn")
 	ortho_piece_instance = ortho_piece_scene.instantiate()
-	diagon_piece_scene = preload("res://diagon_piece.tscn")
+	diagon_piece_scene = preload("res://scenes/diagon_piece.tscn")
 	diagon_piece_instance = diagon_piece_scene.instantiate()
-	dot_scene = preload("res://dot.tscn")
+	dot_scene = preload("res://scenes/dot.tscn")
 	
 	get_node("TileMapArea/TileMapCollisionShape").scale.x = scale.x
 	get_node("TileMapArea/TileMapCollisionShape").scale.y = scale.y

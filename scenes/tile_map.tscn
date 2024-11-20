@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=4 uid="uid://wdgfthjnjpe7"]
+
+[ext_resource type="PackedScene" uid="uid://cifow0itp45ks" path="res://scenes/tile.tscn" id="1_oy8sh"]
+[ext_resource type="Script" path="res://tile_map.gd" id="2_o35qg"]
+[ext_resource type="PackedScene" uid="uid://ijgvnfhoc4h6" path="res://scenes/tile2.tscn" id="2_on5s5"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_og7gl"]
+resource_name = "Tiles"
+scenes/1/scene = ExtResource("1_oy8sh")
+scenes/4/scene = ExtResource("2_on5s5")
+
+[sub_resource type="TileSet" id="TileSet_eerxr"]
+tile_size = Vector2i(138, 138)
+sources/0 = SubResource("TileSetScenesCollectionSource_og7gl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_belal"]
+size = Vector2(546, 545)
+
+[node name="TileMap" type="TileMapLayer"]
+position = Vector2(387, 98)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAEAAAAAAAAAAQACAAEAAAAAAAAAAQADAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQACAAIAAAAAAAAAAQADAAIAAAAAAAAAAQAAAAMAAAAAAAAAAQABAAMAAAAAAAAAAQACAAMAAAAAAAAAAQADAAMAAAAAAAAAAQAEAAAAAAAAAAAAAQAEAAEAAAAAAAAAAQAEAAIAAAAAAAAAAQAEAAMAAAAAAAAAAQAEAAQAAAAAAAAAAQADAAQAAAAAAAAAAQACAAQAAAAAAAAAAQABAAQAAAAAAAAAAQAAAAQAAAAAAAAAAQAFAAAAAAAAAAAAAQAFAAEAAAAAAAAAAQAFAAIAAAAAAAAAAQAFAAMAAAAAAAAAAQAFAAQAAAAAAAAAAQAFAAUAAAAAAAAAAQAEAAUAAAAAAAAAAQADAAUAAAAAAAAAAQACAAUAAAAAAAAAAQABAAUAAAAAAAAAAQAAAAUAAAAAAAAAAQD//wAAAAAAAAAABAD//wEAAAAAAAAABAD//wIAAAAAAAAABAD//wMAAAAAAAAABAD//wQAAAAAAAAABAD//wUAAAAAAAAABAD//wYAAAAAAAAABAAAAAYAAAAAAAAABAABAAYAAAAAAAAABAACAAYAAAAAAAAABAADAAYAAAAAAAAABAAEAAYAAAAAAAAABAAFAAYAAAAAAAAABAAGAAYAAAAAAAAABAAGAAUAAAAAAAAABAAGAAQAAAAAAAAABAAGAAMAAAAAAAAABAAGAAIAAAAAAAAABAAGAAEAAAAAAAAABAAGAAAAAAAAAAAABAAGAP//AAAAAAAABAAFAP//AAAAAAAABAAEAP//AAAAAAAABAADAP//AAAAAAAABAACAP//AAAAAAAABAABAP//AAAAAAAABAAAAP//AAAAAAAABAD/////AAAAAAAABAA=")
+tile_set = SubResource("TileSet_eerxr")
+script = ExtResource("2_o35qg")
+
+[node name="TileMapArea" type="Area2D" parent="."]
+
+[node name="TileMapCollisionShape" type="CollisionShape2D" parent="TileMapArea"]
+position = Vector2(277, 276.5)
+shape = SubResource("RectangleShape2D_belal")
+
+[node name="PieceLabel" type="Label" parent="."]
+offset_left = -754.0
+offset_top = -190.0
+offset_right = -468.0
+offset_bottom = -53.0
+theme_override_font_sizes/font_size = 100
+text = "Ortho"
+horizontal_alignment = 1
+
+[connection signal="mouse_exited" from="TileMapArea" to="." method="_on_tile_map_area_mouse_exited"]
